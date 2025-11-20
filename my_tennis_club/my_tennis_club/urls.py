@@ -20,6 +20,5 @@ from members import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('members/', include(('members.urls', 'members'), namespace='members')),
-    path('', views.member_list, name='index'),  # opcional: home
+    path("", include('members.urls')),
 ]

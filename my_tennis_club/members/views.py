@@ -31,3 +31,7 @@ def member_list(request):
 def details(request, pk):
     m = get_object_or_404(Member, pk=pk)
     return render(request, 'details.html', {'member': m, 'year': timezone.now().year})
+  
+def main(request):
+  template = loader.get_template('main.html')
+  return HttpResponse(template.render())

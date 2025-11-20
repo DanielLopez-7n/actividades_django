@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página No Encontrada</title>
+    <!-- We will use a custom style to match the green palette of My Tennis Club -->
+    <style>
+        /* Define the color palette based on your project's header and body background */
+        :root {
+            --color-dark-green: #118227; /* Main header/button color */
+            --color-light-green: #e9f0e9; /* Light background color */
+            --color-text-dark: #333333;
+            --color-text-link: #118227;
+            --color-box-background: #ffffff;
+            --color-border: #cccccc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Using a modern, clean font */
+            background-color: var(--color-light-green);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header {
+            width: 100%;
+            background-color: var(--color-dark-green);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .error-container {
+            background-color: var(--color-box-background);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 80px; /* Space below the fixed header */
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--color-dark-green);
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--color-text-dark);
+            margin-top: 10px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .error-description {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-dark-green);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0d6e1f; /* Slightly darker green on hover */
+        }
+
+        .footer {
+            margin-top: auto; /* Pushes the footer to the bottom */
+            padding: 20px;
+            color: #666;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        .footer a {
+            color: var(--color-text-link);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mock Header (Matching your project's look) -->
+    <header class="header">
+        <h1>My Tennis Club</h1>
+        <nav class="nav">
+            <a href="#">Inicio</a>
+            <a href="#">Miembros</a>
+            <a href="#">Eventos</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- 404 Error Content Box -->
+    <div class="error-container">
+        <h2 class="error-code">404</h2>
+        <p class="error-message">Página no encontrada</p>
+        
+        <p class="error-description">
+            Lo sentimos, la página que estás buscando no existe. Es posible que el enlace esté roto o que la página haya sido eliminada.
+        </p>
+        
+        <a href="/" class="btn">Volver al Inicio</a>
+        
+        <div style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+            ¿Quizás intentaste acceder a...? 
+            <a href="#" style="color: var(--color-text-link);">Inicio</a> | 
+            <a href="#" style="color: var(--color-text-link);">Miembros</a>
+        </div>
+    </div>
+
+    <!-- Mock Footer (Matching your project's look) -->
+    <footer class="footer">
+        <p>My Tennis Club — Club de tenis</p>
+        <p>
+            <a href="#">Instagram</a> | 
+            <a href="#">Facebook</a> | 
+            <a href="#">Email</a>
+        </p>
+        <p>© 2025 My Tennis Club — Diseño inspirado en paleta verde/tenis</p>
+    </footer>
+
+</body>
+</html>

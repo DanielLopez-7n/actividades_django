@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tennis Club</title>
+
+    <style>
+        /* ======== PALETA VERDE TENIS (Ajustada para mayor contraste y profesionalismo) ======== */
+        :root {
+            --verde-oscuro: #0a5d2e; /* Verde más profundo para la barra de navegación */
+            --verde-medio: #118227; /* Verde principal para botones y acentos (similar al anterior) */
+            --verde-suave: #f0fff0; /* Fondo muy ligero, casi blanco */
+            --texto-principal: #1b1b1b;
+            --gris: #555555;
+            --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra más sutil */
+        }
+
+        /* ======== RESETEO Y TIPOGRAFÍA ======== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Usamos 'Inter' o una fuente moderna similar para un look profesional */
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+
+        body {
+            background: var(--verde-suave);
+            color: var(--texto-principal);
+            min-height: 100vh;
+            display: flex; /* Usamos flex para empujar el footer hacia abajo */
+            flex-direction: column;
+        }
+
+        /* Contenedor central (para todo el contenido principal) */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ======== NAVBAR ======== */
+        nav {
+            width: 100%;
+            background: var(--verde-oscuro);
+            padding: 15px 0; /* Padding ligeramente ajustado */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada para la navegación */
+        }
+
+        nav .nav-content { /* Renombrado de 'container' a 'nav-content' para evitar conflictos */
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: white;
+            font-size: 24px; /* Tamaño ligeramente mayor */
+            font-weight: 700;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px; /* Separación mayor */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: border-bottom 0.3s ease;
+            border-bottom: 2px solid transparent; /* Efecto hover más profesional */
+        }
+
+        nav ul li a:hover {
+            border-bottom: 2px solid white;
+        }
+
+        /* ======== HERO / TARJETA PRINCIPAL ======== */
+        .main-content {
+            flex-grow: 1; /* Permite que el contenido principal crezca */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0; /* Añadimos padding para espacio */
+        }
+
+        .hero-container {
+            width: 90%;
+            max-width: 800px; /* Aumentamos el ancho máximo para más profesionalismo */
+            background: white;
+            padding: 60px; /* Más padding */
+            border-radius: 16px;
+            box-shadow: var(--sombra-card);
+            text-align: center; /* Centramos el contenido del Hero */
+        }
+
+        .hero-container h2 {
+            font-size: 48px; /* Tamaño más grande y audaz */
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero-container p {
+            font-size: 20px;
+            color: var(--gris);
+            margin-bottom: 35px;
+            line-height: 1.6; /* Mejor legibilidad */
+        }
+
+        /* Estilo del botón ajustado */
+        .boton {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 8px;
+            background: var(--verde-medio);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 17px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(17, 130, 39, 0.4); /* Sombra de botón */
+        }
+
+        .boton:hover {
+            background: var(--verde-oscuro);
+            transform: translateY(-2px); /* Pequeño efecto 3D */
+            box-shadow: 0 6px 15px rgba(17, 130, 39, 0.5);
+        }
+
+        /* ======== FOOTER ======== */
+        footer {
+            margin-top: auto; /* Empuja el footer al final */
+            padding: 30px 0;
+            width: 100%;
+            border-top: 1px solid #e0e0e0; /* Línea separadora sutil */
+            background: #ffffff; /* Fondo blanco para contraste */
+            text-align: center;
+            color: var(--gris);
+            font-size: 15px;
+        }
+
+        footer .club-info {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--texto-principal);
+            margin-bottom: 10px;
+        }
+
+        footer .links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding-bottom: 10px;
+        }
+
+        footer .links a {
+            color: var(--gris);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* Enlaces de redes sociales con color de acento */
+        footer .links a:hover {
+            color: var(--verde-medio);
+            text-decoration: underline;
+        }
+
+        /* Media Query para Responsividad */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Ocultar navegación en móvil (para simplificar) */
+            }
+
+            nav .nav-content {
+                justify-content: center;
+            }
+
+            nav h1 {
+                font-size: 20px;
+            }
+
+            .hero-container {
+                padding: 40px 25px;
+                text-align: center;
+            }
+
+            .hero-container h2 {
+                font-size: 36px;
+            }
+
+            .hero-container p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR - BARRA DE NAVEGACIÓN -->
+    <nav>
+        <div class="nav-content">
+            <h1>My Tennis Club</h1>
+
+            <ul>
+                <!-- Enlace a la página principal -->
+                <li><a href="{% url 'members:main' %}">Inicio</a></li>
+                <!-- Enlace a la lista de miembros -->
+                <li><a href="{% url 'members:member_list' %}">Miembros</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT - Contenido Principal que ocupa el espacio restante -->
+    <div class="main-content">
+        <!-- HERO / TARJETA PRINCIPAL -->
+        <div class="hero-container">
+            <h2>Bienvenido a My Tennis Club</h2>
+            <p>El lugar perfecto para entrenar, competir y disfrutar del tenis en un ambiente fresco y natural. Nuestro club ofrece instalaciones de primera y una comunidad apasionada por el deporte.</p>
+
+            <!-- Botón con enlace a la lista de miembros -->
+            <a href="{% url 'members:member_list' %}" class="boton">Ver miembros y tarifas</a>
+        </div>
+    </div>
+
+    <!-- FOOTER - PIE DE PÁGINA -->
+    <footer>
+        <!-- Información del Club -->
+        <div class="club-info">My Tennis Club — Club de tenis</div>
+
+        <!-- Enlaces de Redes Sociales (CORREGIDOS con URLs de ejemplo funcionales) -->
+        <div class="links">
+            <!-- Instagram: Abre en una nueva pestaña. ¡Reemplaza la URL! -->
+            <a href="https://www.instagram.com/mitennisclub" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <!-- Facebook: Abre en una nueva pestaña. ¡Reemplaza la URL! -->
+            <a href="https://www.facebook.com/mitennisclub" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <!-- Email (Contacto): Abre el cliente de correo. ¡Reemplaza el correo! -->
+            <a href="mailto:info@mitennisclub.com">Email</a>
+        </div>
+
+        <!-- Derechos de Autor -->
+        <div style="margin-top: 20px;">
+            &copy; 2025 My Tennis Club — Diseño profesional inspirado en la paleta de tenis.
+        </div>
+    </footer>
+
+</body>
+</html>
