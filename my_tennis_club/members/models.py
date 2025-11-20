@@ -1,4 +1,7 @@
+from enum import member
 from django.db import models
+
+
 
 # Create your models here.
 class Member(models.Model):
@@ -8,3 +11,6 @@ class Member(models.Model):
     joined_date = models.DateField(null=True)
     email = models.EmailField(max_length=254, null=True)
     address = models.CharField(max_length=255, null=True)
+    
+def __str__(self):
+    return f"{self.firstname} {self.lastname}"

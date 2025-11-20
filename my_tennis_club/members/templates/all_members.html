@@ -2,25 +2,104 @@
 {% block title %}Miembros — My Tennis Club{% endblock %}
 
 {% block content %}
-  <div class="hero">
-    <div style="flex:1">
-      <h1>Miembros del club</h1>
-      <p class="lead-muted">Listado de todos los miembros registrados.</p>
+    <!-- Encabezado Estilizado: Usa la clase 'hero' de tu master.html -->
+    <div class="hero">
+        <div style="flex:1">
+            <h1 style="color:var(--accent-2); font-weight:700;">Miembros del club</h1>
+            <p class="lead-muted" style="color:var(--muted);">Listado de todos los miembros registrados.</p>
+        </div>
     </div>
-  </div>
 
-  {% if members %}
-    <ul class="list-group mt-3">
-      {% for m in members %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a href="{% url 'members:detail' m.id %}">{{ m.first_name }} {{ m.last_name }}</a>
-          <small class="text-muted">{{ m.joined_date|date:"d/m/Y" }}</small>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p class="text-muted mt-3">No hay miembros aún.</p>
-  {% endif %}
+    <!-- Lista de Miembros con un diseño profesional de Tarjetas Interactivas -->
+    <div class="list-group list-group-flush border-0 mt-3">
+        
+        <!-- Encabezado de la lista para identificar las columnas (visible en escritorio) -->
+        <div class="list-group-item d-none d-md-flex justify-content-between align-items-center bg-light fw-bold rounded-top" style="border-bottom: 2px solid var(--accent); color:var(--accent); font-size: 0.9rem;">
+            <span>Nombre Completo</span>
+            <span class="text-end" style="width: 120px;">Registro / Acción</span>
+        </div>
 
-  <p><a href="/">HOME</a></p>
+        {% if members %}
+            {% for m in members %}
+                <!-- Item de la lista: Tarjeta interactiva. Toda la fila es clicable. -->
+                <a href="{% url 'members:detail' m.id %}" class="list-group-item list-group-item-action d-flex flex-column flex-md-row justify-content-between align-items-md-center py-3 px-4 transition-all-ease">
+                    
+                    <!-- Contenedor de Nombre -->
+                    <div class="mb-2 mb-md-0">
+                        <!-- Nombre del miembro: Usamos --accent-2 para darle prominencia -->
+                        <span class="d-block fw-semibold h6 mb-0" style="color:var(--accent-2) !important;">
+                            {{ m.first_name }} {{ m.last_name }}
+                        </span>
+                        
+                        <!-- Fecha de Registro (Móvil/Detalle) -->
+                        <span class="d-block text-muted small mt-1 d-md-none">
+                            Registrado: {{ m.joined_date|date:"d/m/Y" }}
+                        </span>
+                    </div>
+                    
+                    <!-- Fecha y Botón de Acción -->
+                    <div class="d-flex align-items-center gap-3">
+                        <!-- Fecha de Registro (Escritorio) -->
+                        
+                        
+                        <!-- Botón de Acción -->
+                        <div class="action-button-wrapper">
+                            <!-- Este SPAN se estiliza como botón para indicar la acción -->
+                            <span class="btn btn-sm text-white py-1 px-3 fw-medium" 
+                                  style="background-color: var(--accent);">
+                                Ver Perfil &rarr;
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted mt-3">No hay miembros aún.</p>
+        {% endif %}
+    </div>
+
+    <!-- Botón HOME estilizado (Volver al Inicio) -->
+    <div class="pt-4 mt-4 border-top text-center">
+        <a href="/" class="btn btn-outline-secondary btn-sm" style="border-color:var(--muted); color:var(--muted);">
+            &larr; Volver al Inicio
+        </a>
+    </div>
+
+    <!-- CSS Adicional (para efectos de transición en las tarjetas) -->
+    <style>
+        /* CSS de transición para un efecto de hover suave */
+        .transition-all-ease {
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+        }
+        /* Efecto de hover en los elementos de la lista: más pronunciado y profesional */
+        .list-group-item-action:hover {
+            /* Usamos el color de fondo sutil del body (var(--bg)) para el hover */
+            background-color: var(--bg) !important; 
+            transform: translateY(-2px); /* Deslizamiento vertical sutil */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra al levantar */
+        }
+        
+        /* Aseguramos que el indicador de acción no se vea como un botón real, sino como una etiqueta */
+        .action-button-wrapper .btn {
+            pointer-events: none; /* Evita que el click se registre en el span, dejando que el <a> principal lo gestione */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        /* En la lista, queremos bordes sutiles entre los items */
+        .list-group-item {
+            border-color: #f0f0f0; 
+        }
+
+        /* Responsividad del botón de acción en móviles */
+        @media (max-width: 767.98px) {
+            .list-group-item-action {
+                align-items: flex-start !important;
+            }
+            .action-button-wrapper {
+                width: 100%;
+                text-align: right;
+            }
+        }
+    </style>
 {% endblock %}

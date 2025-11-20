@@ -1,17 +1,72 @@
 {% extends "master.html" %}
-
-{% block title %}
-  Details about {{ mymember.firstname }} {{ mymember.lastname }}
-{% endblock %}
-
+{% block title %}{{ mymember.first_name }} {{ mymember.last_name }} — My Tennis Club{% endblock %}
 
 {% block content %}
-  <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-  
-  <p>Phone {{ mymember.phone }}</p>
-  <p>Member since: {{ mymember.joined_date }}</p>
-  
-  <p>Back to <a href="/members">Members</a></p>
-  
-  <p><a href="/">HOME</a></p>
+    <!-- Encabezado de la Tarjeta de Perfil -->
+    <div class="page-header pb-4 border-bottom mb-4">
+        <!-- Título principal: Nombre completo del miembro -->
+        <h2 class="h3" style="color:var(--accent); font-weight:700;">
+            Perfil de {{ mymember.first_name }} {{ mymember.last_name }}
+        </h2>
+        <p class="text-secondary small">
+            Detalles completos del miembro y su información de contacto.
+        </p>
+    </div>
+
+    <!-- Contenido Principal: Tarjeta de Datos del Miembro -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+            <!-- Título de la sección de datos -->
+            <h5 class="card-title mb-3" style="color:var(--accent-2); border-left: 3px solid var(--accent); padding-left: 10px;">
+                Información Personal y Contacto
+            </h5>
+
+            <!-- Lista de Datos (Diseño de Tabla Limpia) -->
+            <dl class="row mb-0">
+                
+                <!-- Teléfono/Contacto -->
+                <dt class="col-sm-4 text-muted small py-2 border-top">Teléfono:</dt>
+                <dd class="col-sm-8 fw-semibold py-2 border-top">{{ mymember.phone|default:"No registrado" }}</dd>
+
+                <!-- Fecha de Ingreso al Club -->
+                <dt class="col-sm-4 text-muted small py-2 border-top">Miembro Desde:</dt>
+                <dd class="col-sm-8 fw-semibold py-2 border-top">{{ mymember.joined_date|date:"d M, Y" }}</dd>
+                
+            </dl>
+        </div>
+    </div>
+
+    <!-- Botones de Navegación (Enlaces estilizados) -->
+    <div class="mt-4 pt-3 border-top d-flex justify-content-between">
+        <!-- Botón para volver al listado de miembros -->
+        <a href="/members/" class="btn btn-sm btn-outline-secondary" style="border-color:var(--muted); color:var(--muted);">
+            &larr; Volver a Miembros
+        </a>
+
+        <!-- Botón para ir a la página principal -->
+        <a href="/" class="btn btn-sm btn-outline-primary" style="background-color:var(--accent); border-color:var(--accent); color:#fff;">
+            Ir al Inicio
+        </a>
+    </div>
+
+    <!-- CSS Adicional para la lista de detalles -->
+    <style>
+        /* Asegura que el texto pequeño en los detalles tenga la misma altura de línea */
+        .text-muted.small {
+            line-height: 1.5;
+        }
+        /* Ajuste para móviles para apilar los términos y definiciones */
+        @media (max-width: 575.98px) {
+            .row dt, .row dd {
+                padding-top: 5px !important;
+                padding-bottom: 5px !important;
+            }
+            .row dt {
+                font-size: 0.9rem;
+            }
+            .row dd {
+                font-size: 1rem;
+            }
+        }
+    </style>
 {% endblock %}
