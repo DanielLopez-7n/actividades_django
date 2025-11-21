@@ -1,0 +1,29 @@
+<h1 style="color: blue;">Call Variables from Array</h1>
+{% for fruit in fruits %}
+  <h3>{{ fruit }}</h3>
+{% endfor %}
+
+<h1 style="color: blue;">Create Variables in Template a New Fruit</h1>
+{% with new_fruit="Orange" %}
+  <h3>New Fruit: {{ new_fruit }}</h3>
+{% endwith %}
+
+<h1 style="color: blue;">Call Variables from Model members</h1>
+<ul>
+  {% for miembro in miembros %}
+    <li>{{ miembro.first_name}}</li>
+  {% endfor %}
+</ul>
+
+<!--Lorem-->
+<h2> Lorem Ipsum</h2>    
+{% lorem 50 w %}
+
+<!--Etiqueta date-->
+<h1>{% now "Y-m-d" %}</h1>
+
+<!--Block tag-->
+{% block userinfo %}
+  <h2>Not registred yet</h2>
+{% endblock %}
+
