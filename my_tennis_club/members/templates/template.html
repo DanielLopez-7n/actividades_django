@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Example</title>
+</head>
+<body>
 <h1 style="color: blue;">Call Variables from Array</h1>
 {% for fruit in fruits %}
   <h3>{{ fruit }}</h3>
@@ -27,3 +35,6 @@
   <h2>Not registred yet</h2>
 {% endblock %}
 
+{% include "black_friday.html" %}
+</body>
+</html>
