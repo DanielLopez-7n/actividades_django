@@ -38,7 +38,7 @@ def testing(request):
   template = loader.get_template('template.html')
   miembros = Member.objects.all().values()
   column_fistname = miembros.values_list('first_name')
-  records_daniel = Member.objects.filter(firstname='Daniel')
+  records_daniel = Member.objects.filter(first_name='Daniel')
   record_AND_daniel = Member.objects.filter(first_name='Daniel', id=11).values()
   record_OR_daniel = Member.objects.filter(Q(first_name='Violeta') | Q(first_name='Orlando')).values()
   record_like_start_M = Member.objects.filter(first_name__startswith='M').values()
@@ -47,7 +47,7 @@ def testing(request):
   record_like_icontains_z = Member.objects.filter(first_name__icontains='z').values()
   record_range_id = Member.objects.filter(id__range=(2, 5)).values()
   order_by_asc = Member.objects.all().order_by('first_name').values()
-  order_by_desc = Member.objects.all().order_by('-first_name').values()
+  order_by_desc = Member.objects.all().order_by('first_name').values()
   
   
   context = {

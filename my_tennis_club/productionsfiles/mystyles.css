@@ -1,0 +1,117 @@
+
+    /* ======== PALETA DE COLORES PERSONALIZADA ======== */
+    :root{
+      --bg:#f6f8f6;
+      --card:#ffffff;
+      --accent:#0b5a2b;       /* verde tenis */
+      --accent-2:#0f7a3b;
+      --muted:#6b7a76;
+      --container:1100px;
+    }
+
+    /* ======== ESTILOS BASE Y TIPOGRAFÍA ======== */
+    *{box-sizing:border-box}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      /* Fondo con gradiente sutil para un look moderno */
+      background: linear-gradient(180deg, #f6f8f6 0%, #eef4ee 100%);
+      color:#0f1720;
+      margin:0;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height: 100vh; /* Asegura que ocupe toda la pantalla */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ======== ENCABEZADO (HEADER) ======== */
+    .site-header{
+      /* Gradiente de verde para un efecto 3D en la barra */
+      background: linear-gradient(90deg, rgba(11,90,43,0.98), rgba(15,122,59,0.96));
+      color:#fff;
+      box-shadow: 0 6px 22px rgba(8,40,18,0.32);
+      position:sticky;
+      top:0;
+      z-index:1100;
+    }
+    .header-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; }
+    .brand img{ height:48px; width:auto; border-radius:6px; background:#fff; padding:4px; }
+    .brand .title{ font-family:'Merriweather', serif; font-size:1.15rem; font-weight:700; letter-spacing:0.2px; }
+
+    .main-nav a{
+      color:rgba(255,255,255,0.92);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      transition:background .12s ease, transform .08s ease;
+    }
+    .main-nav a:hover{ background: rgba(255,255,255,0.06); transform:translateY(-2px); }
+
+    /* ======== CONTENIDO PRINCIPAL (MAIN) ======== */
+    main.container-main{
+      max-width:var(--container);
+      margin:40px auto;
+      padding:22px;
+      flex-grow: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+    }
+
+    /* Estilo de la "tarjeta" que envuelve el contenido */
+    .card-surface{
+      background:var(--card);
+      border-radius:12px;
+      box-shadow: 0 10px 36px rgba(10,20,12,0.08);
+      padding:28px;
+    }
+
+    /* Estilo de la tarjeta Hero (si se usa en la página de inicio) */
+    .hero{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      padding:20px;
+      border-radius:10px;
+      background: linear-gradient(90deg,#f2fbf5,#fbfdfc);
+      border:1px solid #e6efe6;
+      margin-bottom:22px;
+    }
+    .hero h1{ margin:0; color:var(--accent-2); font-size:1.6rem; }
+    .hero p{ margin:6px 0 0; color:var(--muted); }
+
+    /* ======== PIE DE PÁGINA (FOOTER) ======== */
+    footer.site-footer{
+      margin-top:28px;
+      padding:24px 0;
+      background:transparent;
+      color:var(--muted);
+      text-align:center;
+      font-size:0.95rem;
+    }
+    .footer-inner{ max-width:var(--container); margin:0 auto; padding:0 20px; display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; }
+    .social a{ 
+      color:var(--muted); 
+      margin-left:15px; /* Más espacio */
+      text-decoration:none;
+      transition: color 0.15s ease;
+    }
+    .social a:hover{
+      color:var(--accent-2); /* Acento al hacer hover en redes */
+    }
+    .small-note{ color:#219f5c; font-size:0.88rem; }
+
+    /* ======== MEDIA QUERIES (Responsividad) ======== */
+    @media (max-width:768px){
+      .header-inner{ flex-direction:column; gap:10px; align-items:center; padding:12px; }
+      .hero{ flex-direction:column; align-items:flex-start; }
+      .brand img{ height:40px; }
+      main.container-main{ margin:24px auto; padding:14px; }
+    }
