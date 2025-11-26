@@ -1,4 +1,219 @@
+/*
+ * Archivo: myglobal.css
+ * Descripción: Tema Oscuro Suave (Soft Dark Mode) con lista de miembros organizada.
+ */
+
+:root {
+    /* ➡️ Variables de Color (Tema Oscuro Suave) */
+    --primary-color: #58a6ff;        /* Azul brillante para acentos */
+    --primary-hover: #79b7ff;        /* Azul más claro para hover */
+    --background-color: #282c34;     /* Fondo principal (Gris oscuro suave) */
+    --card-background: #3c414b;      /* Fondo de tarjetas y elementos (Gris medio) */
+    --text-color: #e6e6e6;           /* Texto principal (Gris claro) */
+    --secondary-text: #b3b3b3;       /* Texto secundario (Gris medio claro) */
+    --border-color: #444b55;         /* Borde sutil (Gris oscuro) */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ➡️ Estilos Generales y Tipografía */
 body {
-  background-color: rgb(69, 148, 188);
-  font-family: verdana;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 25px;
+}
+
+/* ➡️ Títulos y Separadores */
+h1, h2, h3 {
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: var(--primary-color); /* Títulos en el color de acento */
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--border-color); 
+}
+
+/* ➡️ Estilos de las Tarjetas (Fruits) */
+.card-section {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+/* Estilo para las variables individuales (Frutas) */
+.card-section h3 {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0;
+    padding: 10px 15px;
+    background-color: #343841; /* Un poco más oscuro que el fondo de la tarjeta */
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease-out, background-color 0.2s ease;
+    border-left: 3px solid var(--primary-color); /* Toque de color */
+}
+
+.card-section h3:hover {
+    background-color: #494e57; /* Se ilumina un poco al pasar el ratón */
+    transform: translateX(5px);
+}
+
+/* ➡️ Bloque 'Create Variables' (New Fruit) */
+.fruit-with-box {
+    display: inline-block;
+    padding: 15px 25px;
+    border: 2px solid var(--primary-color);
+    background-color: #3c414b;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.fruit-with-box:hover {
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+    border-color: var(--primary-hover);
+}
+
+.fruit-with-box h3 {
+    padding: 0;
+    background: none;
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-hover);
+}
+
+/* ➡️ Estilos de Lista (Model Members) - 🌟 ORGANIZADOS 🌟 */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+ul li {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: 400;
+    border-bottom: 1px solid var(--border-color); /* Separador sutil */
+    transition: background-color 0.3s ease, border-left 0.3s ease, transform 0.3s ease;
+}
+
+/* Quitar el borde inferior del último elemento */
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* Dinámico: Efecto de color de acento y elevación al pasar el ratón */
+ul li:hover {
+    background-color: #444b55; /* Un poco más oscuro para destacar */
+    border-left: 5px solid var(--primary-color);
+    transform: translateX(3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ➡️ Estilo para Lorem Ipsum */
+p {
+    text-align: justify;
+    padding: 15px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    margin-top: 15px;
+    color: var(--secondary-text);
+    border: 1px solid var(--border-color);
+}
+
+/* ➡️ Estilos de Fecha (`{% now %}`) */
+.date-tag {
+    font-size: 1.8em;
+    font-weight: 300;
+    color: var(--secondary-text);
+    padding: 10px 0;
+    text-align: right;
+    display: block;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 20px;
+}
+
+/* ➡️ Estilos del Block Tag (User Info) */
+.block-tag {
+    background-color: #3e331f; /* Fondo oscuro y cálido */
+    color: #ffd76b; /* Texto amarillo suave */
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #ffc107;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.block-tag h2 {
+    color: #ffd76b;
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+/* ➡️ Estilo para la imagen */
+img {
+    display: block;
+    margin: 30px auto 10px auto;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: rotate(2deg) scale(1.05);
+}
+
+/* ➡️ Estilo para el include (black_friday.html) */
+.black-friday-ad {
+    margin: 40px 0;
+    padding: 25px;
+    /* Colores oscuros y vibrantes para destacar en modo oscuro */
+    background: linear-gradient(135deg, #ff4c4c 0%, #cc0000 100%);
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(255, 76, 76, 0.4);
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+/* ➡️ Media Queries para Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    .container {
+        padding: 0 15px;
+    }
 }

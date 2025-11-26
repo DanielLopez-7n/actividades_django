@@ -47,7 +47,7 @@ def testing(request):
   record_like_icontains_z = Member.objects.filter(first_name__icontains='z').values()
   record_range_id = Member.objects.filter(id__range=(2, 5)).values()
   order_by_asc = Member.objects.all().order_by('first_name').values()
-  order_by_desc = Member.objects.all().order_by('first_name').values()
+  order_by_desc = Member.objects.all().order_by('-first_name').values()
   
   
   context = {
